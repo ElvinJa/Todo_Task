@@ -25,7 +25,6 @@ namespace Todo_Managment_System.Services
         public async Task DeleteAsync(Guid id)
         {
             var todoItem = await _context.TodoItems.FirstOrDefaultAsync(x => x.Id == id);
-            if (todoItem == null) throw new NullReferenceException("Todo item not found");
             _context.TodoItems.Remove(todoItem);
             await _context.SaveChangesAsync();
         }
